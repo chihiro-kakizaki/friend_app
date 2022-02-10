@@ -1,6 +1,6 @@
-<h1>ブログ詳細画面</h1>
-<p>タイトル: <%= @blog.title %></p>
-<p>内容: <%= @blog.content %></p>
-<p>
+<div class="show">
+  <h2>投稿内容</h2>
+  <p>タイトル: <%= @blog.title %></p>
+  <p>内容: <%= @blog.content %></p>
   <%= image_tag(@blog.image.url) if @blog.image&.url %>
-</p>
+</div>

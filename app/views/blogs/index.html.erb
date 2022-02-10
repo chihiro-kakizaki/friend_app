@@ -1,16 +1,19 @@
-<p><%= notice %></p>
-<% @blogs.each do |blog| %>
-  <div>
-    <%= blog.user.name if blog.user %>
-    <%= blog.title %>
-    <br><%= blog.content %></br>
-    
-    <%= image_tag blog.image.url %>
-    
-
-    <%= link_to '詳細', blog_path(blog.id) %>
-    <%= link_to "編集する", edit_blog_path(blog.id), data: { confirm: '本当に編集していいですか？'} %>
-    <%= link_to '削除する', blog_path(blog.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
+<div class="blogs">
+<% @blogs.reverse_each do |blog| %>
+  <div class="main">
+    <div class="name">
+      <%= blog.user.name if blog.user %></p>
+      <p>title：<%= blog.title %></p>
+    </div>
+    <div class="image">  
+      <%= image_tag(blog.image.url) if blog.image && blog.image.url %>
+    </div> 
+    <div class="btn">
+      <%= link_to '詳細', blog_path(blog.id) ,class:"show btn btn-info btn-lg "%>
+      <%= link_to "編集", edit_blog_path(blog.id), class:"edit btn btn-info btn-lg" , data: { confirm: '本当に編集していいですか？'} %>
+      <%= link_to '削除', blog_path(blog.id), class:"edit btn btn-info btn-lg" , method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
+    </div>
   </div>
 <% end %>
-<%= link_to '新しく投稿する', new_blog_path %>
+
+</div>
